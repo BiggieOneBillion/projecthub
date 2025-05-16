@@ -22,6 +22,14 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/model/db-model-1.js",
+    "src/app/api/services/github.service.js",
+    "src/app/api/controller/github.controller.js"
+  ],
   "exclude": ["node_modules"]
 }
