@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import {
   Dispatch,
   SetStateAction,
+  useCallback,
   useEffect,
   useState,
   useTransition,
@@ -20,7 +21,7 @@ const Checking = ({ close, updateText }: IChecking) => {
 
   const token = searchParams.get("t");
 
-   const { setGitName } = useAuthStore();
+  const { setGitName } = useAuthStore();
 
   const [message, setMessage] = useState("");
 
@@ -28,25 +29,24 @@ const Checking = ({ close, updateText }: IChecking) => {
 
   const router = useRouter();
 
-  const handleGetInfo = () => {
-    startTransition(async () => {
-      try {
-        const res = await axios.get("api/github/get-user-info");
-        if (res.status === 200) {
-          setGitName(res.data.data.login);
+  const handleChecking = useCallback(() => {
+    const handleGetInfo = () => {
+      startTransition(async () => {
+        try {
+          const res = await axios.get("api/github/get-user-info");
+          if (res.status === 200) {
+            setGitName(res.data.data.login);
+          }
+        } catch (error) {
+          toast.error(`Error verifying token: ${(error as Error).message}`);
         }
-      } catch (error) {
-        toast.error(`Error verifying token: ${(error as Error).message}`);
-      }
-    });
-  };
-
-  const handleChecking = () => {
+      });
+    };
     startTransition(async () => {
       try {
         const res = await axios.post("api/auth/verify-git-login", { token });
         if (res.status === 200) {
-          handleGetInfo()
+          handleGetInfo();
           toast.success(`Verification successful!`);
           // // console.log"This is just the way forward-----", res);
           setMessage("Verification complete");
@@ -66,11 +66,11 @@ const Checking = ({ close, updateText }: IChecking) => {
         updateText("Error Connecting to Github");
       }
     });
-  };
+  }, [close, router, token, updateText, setGitName]);
 
   useEffect(() => {
     handleChecking();
-  }, []);
+  }, [handleChecking]);
 
   return (
     <div className="fixed top-0 left-0 w-full h-screen bg-black/10 flex items-center justify-center">

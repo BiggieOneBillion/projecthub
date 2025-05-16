@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ICommitData } from "./branch-page-view";
 import { useParams } from "next/navigation";
 import { GitBranch } from "lucide-react";
+import Image from "next/image";
 
 interface CommitHistoryViewerProps {
   commits: ICommitData[];
@@ -36,7 +37,7 @@ const CommitHistoryViewer: React.FC<CommitHistoryViewerProps> = ({
               onClick={() => toggleCommit(commit.sha)}
             >
               <div className="flex items-start space-x-4">
-                <img
+                <Image
                   src={commit.author.avatar_url || "/placeholder.svg"}
                   alt={commit.author.login}
                   className="w-10 h-10 rounded-full"

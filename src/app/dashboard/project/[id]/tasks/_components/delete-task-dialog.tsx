@@ -26,7 +26,7 @@ export function DeleteTaskDialog({ id }: { id: string }) {
         await axios.delete(`/api/tasks/${id}`);
         toast.success("Task Deleted");
         queryClient.invalidateQueries({ queryKey: ["project-task"] });
-      } catch (_error) { 
+      } catch { 
         
         toast.error("Deleting Unsuccessful");
       }

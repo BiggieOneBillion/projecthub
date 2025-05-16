@@ -1,8 +1,6 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
 import { TooltipContainer } from "@/components/tool-tip-container";
 
 interface author {

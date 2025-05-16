@@ -1,5 +1,11 @@
 import axios from "axios";
-import { Dispatch, SetStateAction, useEffect, useTransition } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useTransition,
+} from "react";
 
 interface IConnectToGitBtn {
   btnText: string;
@@ -16,23 +22,23 @@ const ConnectToGitBtn: React.FC<IConnectToGitBtn> = ({
     window.location.href = "/api/auth/github";
   };
 
-
-  const handleChecking = () => {
+  const handleChecking = useCallback(() => {
     startTransition(async () => {
       try {
         const res = await axios.post("api/auth/verify-git-login-status", {});
         if (res.status === 200) {
           updateText("Connected to Github");
         }
-      } catch (error) {
+      } catch {
         updateText("Connect To Github");
       }
     });
-  };
+  }, [updateText]);
 
   useEffect(() => {
     handleChecking();
-  }, []);
+  }, [handleChecking]);
+
   return (
     <button
       disabled={btnText === "Connected to Github"}

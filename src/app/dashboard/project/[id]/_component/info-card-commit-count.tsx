@@ -2,10 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuthStore } from "@/store/user-store";
-import { UseQueryResult } from "@tanstack/react-query";
 import axios from "axios";
 import { Loader2Icon } from "lucide-react";
-import { useParams } from "next/navigation";
 import { ReactNode, useEffect, useState, useTransition } from "react";
 
 interface IinfoCard {
@@ -21,7 +19,7 @@ export default function InfoCardCommitCount({
   description,
   repoName,
 }: IinfoCard) {
-  const params = useParams();
+  // const params = useParams();
 
   const [isPending, startTransition] = useTransition();
   const [data, setData] = useState<number | null>(null);
@@ -36,11 +34,11 @@ export default function InfoCardCommitCount({
         );
         // // console.log"COMMIT COUNT", res.data);
         setData(res.data.data);
-      } catch (_error) {
+      } catch  {
         // console.log"Error in getting Commits in a repos", _error);
       }
     });
-  }, []);
+  }, [repoName, details.gitName]);
 
   return (
     <Card>

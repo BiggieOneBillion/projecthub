@@ -46,7 +46,7 @@ async function getTasks(id: string) {
       // return response.data.data;
       return z.array(taskSchema).parse(refinedData);
     }
-  } catch (error) {
+  } catch {
     // console.logerror);
   }
 }

@@ -85,7 +85,7 @@ export default function AddNewProjectForm() {
           queryKey: [QUERY_KEYS.get("projects")],
         });
 
-      } catch (error) {
+      } catch {
         toast.error("Failed to create project", {
           description: "Please try again later",
         });

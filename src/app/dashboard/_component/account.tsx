@@ -4,8 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import axios from "axios";
@@ -24,7 +22,7 @@ const Account = () => {
         await axios.delete("api/auth/log-out");
         toast.success("Logged out successfully");
         router.push("/");
-      } catch (error) {
+      } catch {
         toast.error("Failed to log out");
       }
     });

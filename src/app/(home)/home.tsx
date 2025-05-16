@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { AuthModal } from "./auth-modal";
 import {
@@ -390,7 +389,7 @@ export default function HomePage() {
                   <h3 className="text-2xl font-semibold mb-4 text-gray-900">Manage Tasks & Track Progress</h3>
                   <p className="text-gray-600">
                     Create tasks, assign them to team members, set deadlines, and track progress in real-time. Get
-                    insights into your project's performance with detailed analytics.
+                    insights into your project&apos;s performance with detailed analytics.
                   </p>
                 </div>
 

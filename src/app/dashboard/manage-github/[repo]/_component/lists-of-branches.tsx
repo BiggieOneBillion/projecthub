@@ -1,5 +1,5 @@
 "use client";
-import { useGetRepoBranches, useGetRepoCommits } from "@/lib/git-repo";
+import { useGetRepoBranches } from "@/lib/git-repo";
 import { useAuthStore } from "@/store/user-store";
 import {
   Card,

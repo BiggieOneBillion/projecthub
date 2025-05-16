@@ -3,20 +3,18 @@
 import { useGetRepoSingleBranch } from "@/lib/git-repo";
 import { useAuthStore } from "@/store/user-store";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState, useTransition } from "react";
-import CommitHistory from "./commit-history";
+import { useParams } from "next/navigation";
+import { useCallback, useEffect, useState, useTransition } from "react";
 import CommitHistoryViewer from "./commit-history-view2";
-import { ArrowBigLeft, ArrowBigLeftIcon, ChevronLeft } from "lucide-react";
 import Header from "@/components/header";
 
 interface Props {
   branch: string;
 }
 
-interface IBranch {
-  name: string;
-}
+// interface IBranch {
+//   name: string;
+// }
 
 interface commit {
   author: {
@@ -133,54 +131,55 @@ const BranchPageView = ({ branch }: Props) => {
 
   const [displayedData, setDisplayedData] = useState<ICommitData[] | null>();
 
-  console.log(params);
+  // console.log(params);
 
-  const { data, isLoading } = useGetRepoSingleBranch(
+  const { data } = useGetRepoSingleBranch(
     details.gitName!,
     params.repo! as string,
     branch
   );
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const handleBack = () => {
-    router.back();
-  };
+  // const handleBack = () => {
+  //   router.back();
+  // };
 
-  const handleFetch = async (
-    sha: string,
-    depth = 0,
-    maxDepth = 10
-  ): Promise<any[]> => {
-    console.log("SHA", sha);
-    try {
-      // Add authorization header for higher rate limits
-      const res = await axios.get(
-        `/api/github-repo/repo-branch-commits?owner=${
-          details.gitName
-        }&repoName=${params.repo! as string}&sha=${sha}`
-      );
+  useCallback(() => {}, []);
 
-      // console.log("RESPONSE FROM AXIOS", res.data);
-      // Create commit history array
-      const commitHistory = [res.data.data];
-
-      // Check depth and parents before recursing
-      if (depth < maxDepth && res.data.data.parents.length > 0) {
-        const parentCommits = await handleFetch(
-          res.data.data.parents[0].sha,
-          depth + 1,
-          maxDepth
+  const handleFetch = useCallback(
+    async (sha: string, depth = 0, maxDepth = 10): Promise<unknown[]> => {
+      // console.log("SHA", sha);
+      try {
+        // Add authorization header for higher rate limits
+        const res = await axios.get(
+          `/api/github-repo/repo-branch-commits?owner=${
+            details.gitName
+          }&repoName=${params.repo! as string}&sha=${sha}`
         );
-        return [...commitHistory, ...parentCommits];
-      }
 
-      return commitHistory;
-    } catch (error) {
-      console.error("Error fetching commit:", error);
-      return [];
-    }
-  };
+        // console.log("RESPONSE FROM AXIOS", res.data);
+        // Create commit history array
+        const commitHistory = [res.data.data];
+
+        // Check depth and parents before recursing
+        if (depth < maxDepth && res.data.data.parents.length > 0) {
+          const parentCommits = await handleFetch(
+            res.data.data.parents[0].sha,
+            depth + 1,
+            maxDepth
+          );
+          return [...commitHistory, ...parentCommits];
+        }
+
+        return commitHistory;
+      } catch (error) {
+        console.error("Error fetching commit:", error);
+        return [];
+      }
+    },
+    [details.gitName, params.repo]
+  );
 
   // Update useEffect to handle the returned data
   useEffect(() => {
@@ -191,7 +190,7 @@ const BranchPageView = ({ branch }: Props) => {
             const history = await handleFetch(data.data.commit.sha);
             console.log("Complete commit history:", history);
 
-            setDisplayedData(history);
+            setDisplayedData(history as ICommitData[]);
             // Do something with the history array
           });
         } catch (error) {
@@ -201,7 +200,7 @@ const BranchPageView = ({ branch }: Props) => {
     };
 
     fetchCommitHistory();
-  }, [data]);
+  }, [data, handleFetch]);
 
   return (
     <section className="space-y-5">

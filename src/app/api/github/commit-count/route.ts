@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "../../utils/auth";
 import { GitHubController } from "../../services/github.main.service";
 
-interface IPostData {
-  repoName: string;
-  owner: string;
-}
+// interface IPostData {
+//   repoName: string;
+//   owner: string;
+// }
 export async function GET(req: NextRequest) {
 
   const token = req.cookies.get("auth");

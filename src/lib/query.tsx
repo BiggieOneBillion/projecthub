@@ -1,5 +1,5 @@
 // queries.ts
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { QUERY_KEYS } from "./queryKeys";
 // import { ITask } from "@/app/api/services/task.service";
@@ -42,7 +42,7 @@ export function useGetProjects(userId: string) {
 export function useGetProjectTask(
   projectId: string
   // ): UseQueryResult<{ data: ITask[] }, Error> {
-): UseQueryResult<any, Error> {
+) {
   return useQuery({
     queryKey: [QUERY_KEYS.get("projectTasks")!, projectId], // Use the query key from the Map
     queryFn: async () => {

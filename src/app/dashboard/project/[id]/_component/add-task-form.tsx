@@ -99,7 +99,7 @@ export default function AddTaskForm() {
         toast.success("Added Task To Project Successfully");
 
         queryClient.invalidateQueries({ queryKey: ["project-task"] });
-      } catch (_error) {
+      } catch {
         // console.error("Form submission error", error);
         toast.error("Failed To Create Task. Please try again.");
       }

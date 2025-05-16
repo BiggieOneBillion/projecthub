@@ -4,7 +4,7 @@ import { ProjectController, ProjectData } from "../../services/project.service";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   // const searchParams = req.nextUrl.searchParams;
   // const projectId = searchParams.get("projectId");
@@ -40,9 +40,9 @@ export async function GET(
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const projectId = params.id;
+  const { id: projectId } = await params;
 
   if (!projectId) {
     return NextResponse.json(
@@ -78,7 +78,7 @@ export async function PUT(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const { id: projectId } = await params;
 

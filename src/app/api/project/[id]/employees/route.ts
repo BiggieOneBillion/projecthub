@@ -1,12 +1,12 @@
 import { EmployeeController } from "@/app/api/services/employee.service";
 import { ProjectController } from "@/app/api/services/project.service";
 import { dbConnect } from "@/lib/db";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+// import { NextApiRequest } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
-  request: NextApiRequest,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const { id: projectId } = await params;
 

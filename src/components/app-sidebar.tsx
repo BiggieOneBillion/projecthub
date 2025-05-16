@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 
-import { SearchForm } from "@/components/search-form";
+// import { SearchForm } from "@/components/search-form";
 import {
   Sidebar,
   SidebarContent,
@@ -74,7 +74,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         await axios.delete("api/auth/log-out");
         toast.success("Logged out successfully");
         router.push("/");
-      } catch (error) {
+      } catch {
         toast.error("Failed to log out");
       }
     });

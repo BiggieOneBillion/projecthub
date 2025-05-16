@@ -64,7 +64,7 @@ const EmployeeInfoSetUpForm1 = () => {
       toast.success("Set Up Complete 😎");
       // go to dashboard
       router.push("/");
-    } catch (_error) {
+    } catch  {
       toast.error("Network Error, Try Again!");
     }
   };

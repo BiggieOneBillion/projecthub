@@ -13,7 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Github } from "lucide-react";
 import { useAuthStore } from "@/store/user-store";
 import axios from "axios";
 import { toast } from "sonner";
@@ -98,7 +97,7 @@ export function SignUpForm({ onSuccess }: SignUpFormProps) {
         username: res.data.data.name,
       });
       router.push("/set-up");
-    } catch (error) {
+    } catch {
       toast.error("Sign-up failed.");
     } finally {
       setIsLoading(false);

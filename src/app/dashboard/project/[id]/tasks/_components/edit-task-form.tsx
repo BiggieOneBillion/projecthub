@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useTransition } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -69,7 +69,7 @@ export default function EditTaskForm({ id }: { id: string }) {
   const { data: defaultValue, isLoading: loadingDefault } =
     useGetSingleTask(id);
 
-  const { data: projectData, isLoading } = useGetProject(id);
+  const { data: projectData } = useGetProject(id);
   const isGitProject =
     projectData && projectData.data && projectData.data.onGithub;
 
@@ -116,7 +116,7 @@ export default function EditTaskForm({ id }: { id: string }) {
         toast.success("Added Employee To Project Successfully");
 
         queryClient.invalidateQueries({ queryKey: ["project-task"] });
-      } catch (_error) {
+      } catch {
         // console.error("Form submission error", error);
         toast.error("Failed to submit the form. Please try again.");
       }
@@ -140,7 +140,7 @@ export default function EditTaskForm({ id }: { id: string }) {
     value: string;
   } | null>();
 
-  const handleReloadDefault = async () => {
+  const handleReloadDefault = useCallback(async () => {
     const res = await axios.get(`/api/tasks/${id}`);
     const info = res.data.data;
     form.reset({
@@ -163,7 +163,7 @@ export default function EditTaskForm({ id }: { id: string }) {
       );
       return format[0];
     });
-  };
+  }, [form, id]);
 
   useEffect(() => {
     if (data && data.data) {
@@ -178,7 +178,7 @@ export default function EditTaskForm({ id }: { id: string }) {
 
   useEffect(() => {
     handleReloadDefault();
-  }, []);
+  }, [handleReloadDefault]);
 
   return (
     <>

@@ -35,14 +35,14 @@ export async function POST(req: NextRequest) {
     });
     console.log("TRYING TO SAVE DATA", res);// debug
     projectId = res.id;
-  } catch (error) {
-    console.error(error);
+  } catch  {
+    // console.error(error);
     return new Response("Failed to create set up project", { status: 500 });
   }
 
   for (let i = 0; i < body.employeesDetails.length; i++) {
     try {
-      const res = await EmployeeController.createEmployee({
+       await EmployeeController.createEmployee({
         email: body.employeesDetails[i].email,
         firstName: body.employeesDetails[i].fullname.split(" ")[0] as string,
         lastName: body.employeesDetails[i].fullname.split(" ")[0] as string,
@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
           { projectId: projectId, role: body.employeesDetails[i].projectRole },
         ],
       });
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { message: "Failed to create employee" },
         { status: 500 }

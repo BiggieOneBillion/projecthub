@@ -1,5 +1,5 @@
 import { Employee, Task } from "@/model/db-model-in-use";
-import { EmployeeSchema, EmployeeSchemaFromDb } from "./employee.service";
+import { EmployeeSchemaFromDb } from "./employee.service";
 
 export interface ITask {
   name: string;

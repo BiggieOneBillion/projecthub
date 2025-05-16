@@ -1,4 +1,3 @@
-import axios from "axios";
 import ProjectDetailsView from "./_component/project-details-view";
 // import { useRouter } from "next/navigation";
 

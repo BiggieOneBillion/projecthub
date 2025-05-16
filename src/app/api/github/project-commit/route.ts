@@ -3,10 +3,11 @@ import { verifyToken } from "../../utils/auth";
 import { GitHubController } from "../../services/github.main.service";
 import { ProjectController } from "../../services/project.service";
 
-interface IPostData {
-  repoName: string;
-  owner: string;
-}
+// interface IPostData {
+//   repoName: string;
+//   owner: string;
+// }
+
 export async function GET(req: NextRequest) {
   const token = req.cookies.get("auth");
   if (!token) {

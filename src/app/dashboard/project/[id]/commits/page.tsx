@@ -1,4 +1,4 @@
-import { ArrowBigDown, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import CommitTable from "./_component/commit-table";
 
 export default async function CommitPage({

@@ -1,9 +1,9 @@
 import { Octokit } from "@octokit/rest";
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 
 export const GitHubController = {
   // get users information
-  async getUserInfo(accessToken: string): Promise<any> {
+  async getUserInfo(accessToken: string): Promise<AxiosResponse> {
     const url = "https://api.github.com/user";
     const headers = {
       Authorization: `token ${accessToken}`,
@@ -14,7 +14,7 @@ export const GitHubController = {
       const response = await axios.get(url, { headers });
       return response.data;
     } catch (error) {
-      console.error("Failed to fetch user details:", error);
+      // console.error("Failed to fetch user details:", error);
       throw new Error(`Error fetching user details:
         ${(error as AxiosError).response?.data || error}`);
     }
@@ -118,7 +118,7 @@ export const GitHubController = {
         auth: accessCode,
       });
 
-      const formattedRepoName = (repoName as string).replace(/ /g, "-");
+      // const formattedRepoName = (repoName as string).replace(/ /g, "-");
 
       // console.log"Fetching commits for:", owner, formattedRepoName);
 
@@ -149,13 +149,18 @@ export const GitHubController = {
       );
     }
   },
-  async repoBranchCommits(accessCode: string, owner: string, repoName: string, sha:string) {
+  async repoBranchCommits(
+    accessCode: string,
+    owner: string,
+    repoName: string,
+    // sha: string
+  ) {
     try {
       const octokit = new Octokit({
         auth: accessCode,
       });
 
-      const formattedRepoName = (repoName as string).replace(/ /g, "-");
+      // const formattedRepoName = (repoName as string).replace(/ /g, "-");
 
       // console.log"Fetching commits for:", owner, formattedRepoName);
 

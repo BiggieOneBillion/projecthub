@@ -5,12 +5,13 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { Loader2Icon } from "lucide-react";
 import { useParams } from "next/navigation";
 import { ReactNode } from "react";
+import { ITask } from "./task-list-card";
 
 interface IinfoCard {
   title: string;
   children: ReactNode;
   description: string;
-  getData<T>(projectId: string): UseQueryResult<T, Error>;
+  getData(projectId: string): UseQueryResult<{ data: ITask[] }, Error>;
 }
 
 export default function InfoCard({
@@ -21,8 +22,7 @@ export default function InfoCard({
 }: IinfoCard) {
   const params = useParams();
 
-  const { data, isLoading } =
-    getData(params.id as string);
+  const { data, isLoading } = getData(params.id as string);
 
   return (
     <Card>
@@ -31,7 +31,7 @@ export default function InfoCard({
         <span className="h-4 w-4 text-muted-foreground">{children}</span>
       </CardHeader>
       <CardContent>
-        {data && data.data && (
+        {data && data?.data && (
           <div className="text-2xl font-bold">{data.data?.length}</div>
         )}
         {isLoading && <Loader2Icon className="animate-spin" />}

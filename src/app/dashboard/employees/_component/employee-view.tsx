@@ -4,7 +4,6 @@ import { useGetAllEmployees } from "@/lib/query";
 import { useAuthStore } from "@/store/user-store";
 import EmployeeDataTable from "./employees-data-table";
 import { v4 } from "uuid";
-import { Table } from "lucide-react";
 
 export interface DataType {
   projectName: string;

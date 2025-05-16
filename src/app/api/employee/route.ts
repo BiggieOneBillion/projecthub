@@ -78,7 +78,7 @@ export async function GET(req: NextRequest) {
           employees: res,
         };
         result.push(data);
-      } catch (error) {
+      } catch {
         return NextResponse.json(
           { message: "Error fetching employees" },
           { status: 500 }

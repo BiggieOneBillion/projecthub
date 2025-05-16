@@ -26,7 +26,6 @@ import { PasswordInput } from "@/components/ui/password-input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import useSubmitBtn from "@/hooks/use-submit-btn";
-import { useSetUpStore } from "@/store/setup-store";
 import { useAuthStore } from "@/store/user-store";
 // import { useSignUp } from "@clerk/nextjs";
 
@@ -61,7 +60,7 @@ export default function Signup() {
 
   const router = useRouter();
 
-  const { setUserId } = useSetUpStore();
+  // const { setUserId } = useSetUpStore();
 
   const {
     SubmitBtn,
@@ -90,7 +89,7 @@ export default function Signup() {
       handleBtnText("Success");
       handleIsLoadingFalse();
       router.push("/set-up");
-    } catch (error) {
+    } catch {
       handleBtnText("Try Again");
       handleIsLoadingFalse();
       // console.log"Form submission error", error);

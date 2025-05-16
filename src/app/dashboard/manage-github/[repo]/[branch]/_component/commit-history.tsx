@@ -2,6 +2,7 @@ import type React from "react"
 import { format } from "date-fns"
 import { GitCommit, FileText, Plus, Minus } from "lucide-react"
 import { ICommitData } from "./branch-page-view"
+import Image from "next/image"
 
 interface CommitHistoryProps {
   commits: ICommitData[]
@@ -15,7 +16,7 @@ const CommitHistory: React.FC<CommitHistoryProps> = ({ commits }) => {
         {commits.map((commit) => (
           <div key={commit.sha} className="bg-white rounded-lg shadow-md mb-6 p-6">
             <div className="flex items-center mb-4">
-              <img
+              <Image
                 src={commit.author.avatar_url || "/placeholder.svg"}
                 alt={commit.author.login}
                 className="w-10 h-10 rounded-full mr-4"
