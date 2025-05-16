@@ -137,29 +137,37 @@ export default function HomePage() {
           </div>
         </section>
 
-          {/* How it Works Section - Redesigned */}
+        {/* How it Works Section - Redesigned with different mobile view */}
         <section id="how-it-works" className="py-24 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <h2 className="text-4xl font-bold mb-6 text-gray-900">How It Works</h2>
-              <p className="text-gray-600 text-lg">A simple process to get you started with ProjectHub</p>
+              <h2 className="text-4xl font-bold mb-6 text-gray-900">
+                How It Works
+              </h2>
+              <p className="text-gray-600 text-lg">
+                A simple process to get you started with ProjectHub
+              </p>
             </div>
 
-            <div className="relative">
+            {/* Desktop View - Timeline */}
+            <div className="relative hidden md:block">
               {/* Connection Line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-teal-100 hidden md:block" />
+              <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-teal-100" />
 
               {/* Step 1 */}
-              <div className="relative z-10 flex flex-col md:flex-row items-center mb-20">
-                <div className="md:w-5/12 mb-8 md:mb-0 md:pr-12 md:text-right">
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">Create Your Account</h3>
+              <div className="relative z-10 flex items-center mb-20">
+                <div className="w-5/12 pr-12 text-right">
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                    Create Your Account
+                  </h3>
                   <p className="text-gray-600">
-                    Sign up in seconds and set up your profile. Choose to connect with GitHub for seamless integration
-                    or use ProjectHub as a standalone tool.
+                    Sign up in seconds and set up your profile. Choose to
+                    connect with GitHub for seamless integration or use
+                    ProjectHub as a standalone tool.
                   </p>
                 </div>
 
-                <div className="md:w-2/12 flex justify-center">
+                <div className="w-2/12 flex justify-center">
                   <div className="w-16 h-16 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +188,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="md:w-5/12 md:pl-12">
+                <div className="w-5/12 pl-12">
                   <div className="bg-[#f8f9fa] p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
                     <div className="flex items-center mb-4">
                       <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mr-4">
@@ -218,7 +226,14 @@ export default function HomePage() {
                         strokeLinejoin="round"
                         className="text-teal-200"
                       >
-                        <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                        <rect
+                          width="18"
+                          height="11"
+                          x="3"
+                          y="11"
+                          rx="2"
+                          ry="2"
+                        />
                         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                       </svg>
                     </div>
@@ -227,35 +242,8 @@ export default function HomePage() {
               </div>
 
               {/* Step 2 */}
-              <div className="relative z-10 flex flex-col md:flex-row-reverse items-center mb-20">
-                <div className="md:w-5/12 mb-8 md:mb-0 md:pl-12">
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">Connect with GitHub</h3>
-                  <p className="text-gray-600">
-                    Link your GitHub repositories to ProjectHub. Import existing projects or create new ones that sync
-                    automatically with your GitHub repos.
-                  </p>
-                </div>
-
-                <div className="md:w-2/12 flex justify-center">
-                  <div className="w-16 h-16 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                      <path d="M9 18c-4.51 2-5-2-7-2" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div className="md:w-5/12 md:pr-12 md:text-right">
+              <div className="relative z-10 flex items-center mb-20">
+                <div className="w-5/12 pr-12 text-right">
                   <div className="bg-[#f8f9fa] p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
                     <div className="flex items-center mb-4 justify-end">
                       <div>
@@ -300,19 +288,52 @@ export default function HomePage() {
                     </div>
                   </div>
                 </div>
+
+                <div className="w-2/12 flex justify-center">
+                  <div className="w-16 h-16 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                      <path d="M9 18c-4.51 2-5-2-7-2" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="w-5/12 pl-12">
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                    Connect with GitHub
+                  </h3>
+                  <p className="text-gray-600">
+                    Link your GitHub repositories to ProjectHub. Import existing
+                    projects or create new ones that sync automatically with
+                    your GitHub repos.
+                  </p>
+                </div>
               </div>
 
               {/* Step 3 */}
-              <div className="relative z-10 flex flex-col md:flex-row items-center mb-20">
-                <div className="md:w-5/12 mb-8 md:mb-0 md:pr-12 md:text-right">
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">Create Projects & Teams</h3>
+              <div className="relative z-10 flex items-center mb-20">
+                <div className="w-5/12 pr-12 text-right">
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                    Create Projects & Teams
+                  </h3>
                   <p className="text-gray-600">
-                    Set up your projects and invite team members to collaborate. Define roles and permissions for each
-                    team member to streamline your workflow.
+                    Set up your projects and invite team members to collaborate.
+                    Define roles and permissions for each team member to
+                    streamline your workflow.
                   </p>
                 </div>
 
-                <div className="md:w-2/12 flex justify-center">
+                <div className="w-2/12 flex justify-center">
                   <div className="w-16 h-16 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -333,7 +354,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="md:w-5/12 md:pl-12">
+                <div className="w-5/12 pl-12">
                   <div className="bg-[#f8f9fa] p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
                     <div className="flex items-center mb-4">
                       <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center mr-4">
@@ -384,37 +405,8 @@ export default function HomePage() {
               </div>
 
               {/* Step 4 */}
-              <div className="relative z-10 flex flex-col md:flex-row-reverse items-center">
-                <div className="md:w-5/12 mb-8 md:mb-0 md:pl-12">
-                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">Manage Tasks & Track Progress</h3>
-                  <p className="text-gray-600">
-                    Create tasks, assign them to team members, set deadlines, and track progress in real-time. Get
-                    insights into your project&apos;s performance with detailed analytics.
-                  </p>
-                </div>
-
-                <div className="md:w-2/12 flex justify-center">
-                  <div className="w-16 h-16 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m9 11-6 6v3h9l3-3" />
-                      <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4" />
-                      <path d="m14 4 6 6" />
-                      <path d="m21 3-6 6" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div className="md:w-5/12 md:pr-12 md:text-right">
+              <div className="relative z-10 flex items-center">
+                <div className="w-5/12 pr-12 text-right">
                   <div className="bg-[#f8f9fa] p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
                     <div className="flex items-center mb-4 justify-end">
                       <div>
@@ -459,6 +451,185 @@ export default function HomePage() {
                       </svg>
                     </div>
                   </div>
+                </div>
+
+                <div className="w-2/12 flex justify-center">
+                  <div className="w-16 h-16 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-lg relative z-10">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m9 11-6 6v3h9l3-3" />
+                      <path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4" />
+                      <path d="m14 4 6 6" />
+                      <path d="m21 3-6 6" />
+                    </svg>
+                  </div>
+                </div>
+
+                <div className="w-5/12 pl-12">
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-900">
+                    Manage Tasks & Track Progress
+                  </h3>
+                  <p className="text-gray-600">
+                    Create tasks, assign them to team members, set deadlines,
+                    and track progress in real-time. Get insights into your
+                    project's performance with detailed analytics.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile View - Simple Cards */}
+            <div className="md:hidden space-y-8">
+              {/* Step 1 */}
+              <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="bg-teal-600 p-4 text-white flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white text-teal-600 flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="font-bold text-lg">1</span>
+                  </div>
+                  <h3 className="font-semibold text-xl">Create Your Account</h3>
+                </div>
+                <div className="p-5">
+                  <div className="flex justify-center mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="60"
+                      height="60"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-teal-200"
+                    >
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600">
+                    Sign up in seconds and set up your profile. Choose to
+                    connect with GitHub for seamless integration or use
+                    ProjectHub as a standalone tool.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="bg-teal-600 p-4 text-white flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white text-teal-600 flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="font-bold text-lg">2</span>
+                  </div>
+                  <h3 className="font-semibold text-xl">Connect with GitHub</h3>
+                </div>
+                <div className="p-5">
+                  <div className="flex justify-center mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="60"
+                      height="60"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-teal-200"
+                    >
+                      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                      <path d="M9 18c-4.51 2-5-2-7-2" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600">
+                    Link your GitHub repositories to ProjectHub. Import existing
+                    projects or create new ones that sync automatically with
+                    your GitHub repos.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="bg-teal-600 p-4 text-white flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white text-teal-600 flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="font-bold text-lg">3</span>
+                  </div>
+                  <h3 className="font-semibold text-xl">
+                    Create Projects & Teams
+                  </h3>
+                </div>
+                <div className="p-5">
+                  <div className="flex justify-center mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="60"
+                      height="60"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-teal-200"
+                    >
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600">
+                    Set up your projects and invite team members to collaborate.
+                    Define roles and permissions for each team member to
+                    streamline your workflow.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 4 */}
+              <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
+                <div className="bg-teal-600 p-4 text-white flex items-center">
+                  <div className="w-10 h-10 rounded-full bg-white text-teal-600 flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="font-bold text-lg">4</span>
+                  </div>
+                  <h3 className="font-semibold text-xl">
+                    Manage Tasks & Track Progress
+                  </h3>
+                </div>
+                <div className="p-5">
+                  <div className="flex justify-center mb-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="60"
+                      height="60"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="text-teal-200"
+                    >
+                      <rect width="6" height="6" x="3" y="3" rx="1" />
+                      <rect width="6" height="6" x="15" y="3" rx="1" />
+                      <rect width="6" height="6" x="3" y="15" rx="1" />
+                      <rect width="6" height="6" x="15" y="15" rx="1" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600">
+                    Create tasks, assign them to team members, set deadlines,
+                    and track progress in real-time. Get insights into your
+                    project's performance with detailed analytics.
+                  </p>
                 </div>
               </div>
             </div>
